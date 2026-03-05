@@ -19,5 +19,6 @@ int main()
     
     cout << "What difficulty would you like? ";
     getline(cin, d);
-    
+
+    return 0;
 }
