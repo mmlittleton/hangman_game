@@ -2,6 +2,11 @@
     Authors: Madeline Littleton and Kylee Walker
 */
 
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+
 int main()
 {
     string d;
@@ -17,7 +22,10 @@ int main()
     
         cout << "What difficulty would you like? ";
         getline(cin, d);
-        tolower()
+        
+        for(int i = 0; i < d.size(); i++) {
+            d[i] = tolower(d[i]);
+        }
     }
     return 0;
 }
