@@ -18,8 +18,8 @@ int main()
     getline(cin, m);
     
     for(int i = 0; i < m.size(); i++) {
-            m[i] = tolower(m[i]);
-        }
+        m[i] = tolower(m[i]);
+    }
     
     while(d != "exit") {
         cout << "Difficulties:" << endl;
