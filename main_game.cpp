@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <cctype>
+#include <difficulties.h>
 using namespace std;
 
 int main()
