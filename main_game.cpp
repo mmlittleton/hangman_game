@@ -27,6 +27,23 @@ int main()
         for(int i = 0; i < d.size(); i++) {
             d[i] = tolower(d[i]);
         }
+    
+        if(d == "easy") {
+            easyMode();
+        }
+        else if(d == "medium") {
+            mediumMode();
+        }
+        else if(d == "hard") {
+            hardMode();
+        }
+        else if(d == "extra hard") {
+            extraHardMode();
+        }
+        else if(d != "exit") {
+            cout << "Invalid difficulty. Try again." << endl;
+        }
+        
     }
     return 0;
 }
