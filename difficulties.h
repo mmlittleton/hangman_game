@@ -3,7 +3,7 @@
 #include <ctime>
 
 using namespace std;
-string word
+string word;
 string extra_hard(){
   srand(time(0));
     std::ifstream file("extra_hard.txt");
