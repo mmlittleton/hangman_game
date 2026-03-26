@@ -14,7 +14,7 @@ int main()
     string m;
     cout << "Welcome to Hangman!" << endl;
     
-    cout << "Would you like to do Single or Multiplayer? ";
+    cout << "Single or Multiplayer? ";
     getline(cin, m);
     
     for(int i = 0; i < m.size(); i++) {
