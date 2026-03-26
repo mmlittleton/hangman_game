@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <fstream>
 
 using namespace std;
 string word;
@@ -8,7 +9,7 @@ string extra_hard(){
   srand(time(0));
     std::ifstream file("extra_hard.txt");
     std::string line;
-    int targetLine = rand() % 162) + 1; // The specific line you want to read
+    int targetLine = rand() % 162 + 1; // The specific line you want to read
     int currentLine = 0;
 
     if (file.is_open()) {
@@ -18,12 +19,13 @@ string extra_hard(){
         }
         file.close();
     }
+    return 0;
 }
 string hard(){
   srand(time(0));
     std::ifstream file("hard.txt");
     std::string line;
-    int targetLine = rand() % 67) + 1; // The specific line you want to read
+    int targetLine = rand() % 67 + 1; // The specific line you want to read
     int currentLine = 0;
 
     if (file.is_open()) {
@@ -33,12 +35,13 @@ string hard(){
         }
         file.close();
     }
+    return 0;
 }
 string medium(){
     srand(time(0));
     std::ifstream file("medium.txt");
     std::string line;
-    int targetLine = rand() % 27) + 1; // The specific line you want to read
+    int targetLine = rand() % 27 + 1; // The specific line you want to read
     int currentLine = 0;
 
     if (file.is_open()) {
@@ -48,12 +51,13 @@ string medium(){
         }
         file.close();
     }
+    return 0;
 }
 string easy(){
     srand(time(0));
     std::ifstream file("easy.txt");
     std::string line;
-    int targetLine = rand() % 75) + 1; // The specific line you want to read
+    int targetLine = rand() % 75 + 1; // The specific line you want to read
     int currentLine = 0;
 
     if (file.is_open()) {
@@ -62,5 +66,6 @@ string easy(){
             word=line;
         }
         file.close();
-    };
+    }
+    return 0;
 }
