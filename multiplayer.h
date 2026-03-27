@@ -5,6 +5,6 @@
 
 using namespace std;
 
-void multiPlayerMode(){
+void multiplayer_mode(){
     
 }
