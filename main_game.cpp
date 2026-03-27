@@ -55,7 +55,7 @@ int main()
         }
     }
     else if (m == "multiplayer") {
-        multiPlayerMode();
+        multiplayer_mode();
     }
     else {
         cout << "Invalid mode." << endl;
