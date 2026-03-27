@@ -38,16 +38,16 @@ int main()
             }
     
             if(d == "easy") {
-                easyMode();
+                easy();
             }
             else if(d == "medium") {
-                mediumMode();
+                medium();
             }
             else if(d == "hard") {
-                hardMode();
+                hard();
             }
             else if(d == "extra hard") {
-                extraHardMode();
+                extra_hard();
             }
             else if(d != "exit") {
                 cout << "Invalid difficulty. Try again." << endl;
