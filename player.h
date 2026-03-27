@@ -9,6 +9,7 @@ class Player {
 private:
     string name;
     int wins;
+    int losses;
 
 public:
     Player();
