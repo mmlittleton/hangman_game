@@ -17,6 +17,8 @@ public:
 
     void addWin();
     int getWins() const;
+    void addLoss();
+    int getLosses() const;
 
     friend ostream& operator<<(ostream& os, const Player& p);
 };
