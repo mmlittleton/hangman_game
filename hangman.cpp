@@ -2,9 +2,9 @@
     Authors: Madeline Littleton and Kylee Walker
 */
 
-#include "hangman.h"
 #include <iostream>
 #include <cctype>
+#include "hangman.h"
 
 using namespace std;
 
