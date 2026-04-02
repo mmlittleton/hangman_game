@@ -42,7 +42,10 @@ string Player::getName() const {
 }
 
 ostream& operator<<(ostream& os, const Player& p) {
-    os << p.name << " | Wins: " << p.wins << " | Losses: " << p.losses;
+    os << p.name << " | "
+       << "\033[32mWins: " << p.wins << "\033[0m"
+       << " | "
+       << "\033[31mLosses: " << p.losses << "\033[0m";
     return os;
 }
 
