@@ -2,15 +2,15 @@
     Authors: Madeline Littleton and Kylee Walker
 */
 
-#include "difficulties.h"
-#include "hangman.h"
-#include "player.h"
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <stdexcept>
 #include <cstdlib>
 #include <cctype>
+#include "difficulties.h"
+#include "hangman.h"
+#include "player.h"
 
 using namespace std;
 
