@@ -33,13 +33,24 @@ string loadWord(string fileName) {
     return words[rand() % words.size()];
 }
 
-string easy() { return loadWord("easy.txt"); }
-string medium() { return loadWord("medium.txt"); }
-string hard() { return loadWord("hard.txt"); }
-string extra_hard() { return loadWord("extra_hard.txt"); }
+string easy() {
+    return loadWord("easy.txt");
+}
+
+string medium() {
+    return loadWord("medium.txt");
+}
+
+string hard() {
+    return loadWord("hard.txt");
+}
+
+string extra_hard() {
+    return loadWord("extra_hard.txt");
+}
 
 void multiplayer_mode() {
-    string setterName, guesserName, word;
+    string setterName, guesserName, word, again = "yes";
 
     cout << "Setter name: ";
     getline(cin, setterName);
@@ -47,23 +58,67 @@ void multiplayer_mode() {
     cout << "Guesser name: ";
     getline(cin, guesserName);
 
+    if (setterName.empty()) {
+        setterName = "Player 1";
+    }
+
+    if (guesserName.empty()) {
+        guesserName = "Player 2";
+    }
+
     HumanPlayer setter(setterName);
     HumanPlayer guesser(guesserName);
 
-    cout << setter.getName() << ", enter word: ";
-    getline(cin, word);
+    while (again == "yes") {
+        cout << setter.getName() << ", enter word: ";
+        getline(cin, word);
 
-    for (char& c : word) c = tolower(c);
+        if (word.empty()) {
+            throw runtime_error("Word cannot be empty.");
+        }
 
-    for (int i = 0; i < 50; i++) cout << endl;
+        for (char& c : word) {
+            c = tolower(c);
+        }
 
-    Hangman game(word, guesser);
-    game.play();
+        for (int i = 0; i < 50; i++) {
+            cout << endl;
+        }
 
-    if (game.playerWon()) setter.addLoss();
-    else setter.addWin();
+        cout << guesser.getName() << " is guessing." << endl;
 
-    cout << endl << "Final Session Stats:" << endl;
-    cout << guesser << endl;
+        Hangman game(word, guesser);
+        game.play();
+
+        if (game.playerWon()) {
+            setter.addLoss();
+        }
+        else {
+            setter.addWin();
+        }
+
+        cout << endl;
+        cout << "Play again? (yes/no): ";
+        getline(cin, again);
+
+        for (char& c : again) {
+            c = tolower(c);
+        }
+
+        if (again == "yes") {
+            HumanPlayer temp = setter;
+            setter = guesser;
+            guesser = temp;
+            cout << endl;
+            cout << "Roles swapped." << endl;
+            cout << setter.getName() << " is now the setter." << endl;
+            cout << guesser.getName() << " is now the guesser." << endl;
+            cout << endl;
+        }
+    }
+
+    cout << endl;
+    cout << "Final Session Stats:" << endl;
     cout << setter << endl;
+    cout << guesser << endl;
 }
