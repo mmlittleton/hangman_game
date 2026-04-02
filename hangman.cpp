@@ -21,7 +21,8 @@ Hangman::Hangman(string word, HumanPlayer& p) : player(p) {
     }
 }
 
-Hangman::~Hangman() {}
+Hangman::~Hangman() {
+}
 
 bool Hangman::alreadyGuessed(char guess) const {
     for (char c : guessedLetters) {
@@ -45,17 +46,42 @@ void Hangman::updateWord(char guess) {
 
 void Hangman::displayWord() const {
     cout << "Word: ";
-    for (char c : guessedWord) cout << c << ' ';
+    for (char c : guessedWord) {
+        cout << c << ' ';
+    }
     cout << endl;
 }
 
 void Hangman::displayGuessedLetters() const {
     cout << "Guessed letters: ";
-    for (char c : guessedLetters) cout << c << ' ';
+    for (char c : guessedLetters) {
+        cout << c << ' ';
+    }
     cout << endl;
 }
 
 void Hangman::printHangman() const {
+    string color;
+
+    if (wrongGuesses == 0) {
+        color = "\033[32m";
+    }
+    else if (wrongGuesses == 1) {
+        color = "\033[92m";
+    }
+    else if (wrongGuesses == 2) {
+        color = "\033[33m";
+    }
+    else if (wrongGuesses == 3) {
+        color = "\033[93m";
+    }
+    else if (wrongGuesses == 4) {
+        color = "\033[91m";
+    }
+    else {
+        color = "\033[31m";
+    }
+
     string stages[7] = {
         "  +---+\n  |   |\n      |\n      |\n      |\n      |\n=========",
         "  +---+\n  |   |\n  O   |\n      |\n      |\n      |\n=========",
@@ -65,7 +91,8 @@ void Hangman::printHangman() const {
         "  +---+\n  |   |\n  O   |\n /|\\  |\n /    |\n      |\n=========",
         "  +---+\n  |   |\n  O   |\n /|\\  |\n / \\  |\n      |\n========="
     };
-    cout << stages[wrongGuesses] << endl;
+
+    cout << color << stages[wrongGuesses] << "\033[0m" << endl;
 }
 
 void Hangman::play() {
@@ -78,31 +105,50 @@ void Hangman::play() {
         cout << "Enter one letter: ";
         getline(cin, input);
 
-        if (input.size() != 1 || !isalpha(input[0])) continue;
+        if (input.size() != 1 || !isalpha(input[0])) {
+            cout << "Invalid guess. Enter one letter only." << endl;
+            continue;
+        }
 
         char guess = tolower(input[0]);
 
-        if (alreadyGuessed(guess)) continue;
+        if (alreadyGuessed(guess)) {
+            cout << "You already guessed that letter." << endl;
+            continue;
+        }
 
         guessedLetters.push_back(guess);
 
-        if (containsLetter(guess)) updateWord(guess);
-        else wrongGuesses++;
+        if (containsLetter(guess)) {
+            updateWord(guess);
+            cout << "\033[32mCorrect!\033[0m" << endl;
+        }
+        else {
+            wrongGuesses++;
+            cout << "\033[31mIncorrect!\033[0m" << endl;
+        }
+
+        cout << endl;
     }
 
     printHangman();
     displayWord();
 
     if (guessedWord == secretWord) {
-        cout << "You won! The word was " << secretWord << endl;
+        cout << "\033[32mYou won! The word was " << secretWord << "\033[0m" << endl;
         player.addWin();
-    } else {
-        cout << "You lost! The word was " << secretWord << endl;
+    }
+    else {
+        cout << "\033[31mYou lost! The word was " << secretWord << "\033[0m" << endl;
         player.addLoss();
     }
 
     cout << "Current Stats:" << endl;
     cout << player << endl;
+}
+
+bool Hangman::playerWon() const {
+    return guessedWord == secretWord;
 }
 
 bool Hangman::playerWon() const {
