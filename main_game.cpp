@@ -29,15 +29,24 @@ int main()
 
     if (m == "single") {
         string d;
-        HumanPlayer singlePlayer("Player");
+        string playerName;
+
+        cout << "Enter your name: ";
+        getline(cin, playerName);
+
+        if (playerName.empty()) {
+            playerName = "Player";
+        }
+
+        HumanPlayer singlePlayer(playerName);
 
         while (d != "exit") {
             cout << endl;
             cout << "Difficulties:" << endl;
-            cout << "Easy" << endl;
-            cout << "Medium" << endl;
-            cout << "Hard" << endl;
-            cout << "Extra Hard" << endl;
+            cout << "\033[32mEasy\033[0m" << endl;
+            cout << "\033[33mMedium\033[0m" << endl;
+            cout << "\033[93mHard\033[0m" << endl;
+            cout << "\033[31mExtra Hard\033[0m" << endl;
             cout << "Exit" << endl;
 
             cout << "What difficulty would you like? ";
