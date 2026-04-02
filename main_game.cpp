@@ -44,8 +44,8 @@ int main()
             cout << endl;
             cout << "Difficulties:" << endl;
             cout << "\033[32mEasy\033[0m" << endl;
-            cout << "\033[33mMedium\033[0m" << endl;
-            cout << "\033[93mHard\033[0m" << endl;
+            cout << "\033[93mMedium\033[0m" << endl;
+            cout << "\033[33mHard\033[0m" << endl;
             cout << "\033[31mExtra Hard\033[0m" << endl;
             cout << "Exit" << endl;
 
