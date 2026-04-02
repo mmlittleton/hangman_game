@@ -14,14 +14,22 @@ private:
 public:
     Player();
     Player(string n);
-    ~Player();
+    virtual ~Player();
 
     void addWin();
     int getWins() const;
     void addLoss();
     int getLosses() const;
+    string getName() const;
 
     friend ostream& operator<<(ostream& os, const Player& p);
+};
+
+class HumanPlayer : public Player {
+public:
+    HumanPlayer();
+    HumanPlayer(string n);
+    ~HumanPlayer();
 };
 
 #endif
